@@ -1,0 +1,31 @@
+import java.util.*;
+public class Solution {
+
+	public static void printLevelWise(BinaryTreeNode<Integer> root) {
+		
+        if(root==null) return;
+        
+        //BinaryTreeNode<Integer> root =new BinaryTreeNode<>(root.data);
+        Queue<BinaryTreeNode<Integer>> pendingchildren=new LinkedList<BinaryTreeNode<Integer>>();
+        pendingchildren.add(root);
+        while(true){
+            int nodecount=pendingchildren.size();
+            if(nodecount==0) break;
+            while(nodecount>0){
+                 BinaryTreeNode<Integer> front=pendingchildren.poll();
+          
+                   System.out.print(front.data+" ");
+                 if(front.left!=null){
+                pendingchildren.add(front.left);
+               }
+                 if(front.right!=null){
+                pendingchildren.add(front.right);
+            }
+                nodecount--;
+                
+            }
+            System.out.println();
+        }
+    }
+    
+}
