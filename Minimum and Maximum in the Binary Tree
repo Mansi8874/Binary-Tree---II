@@ -1,0 +1,18 @@
+public class Solution {
+
+	public static Pair<Integer, Integer> getMinAndMax(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+        if(root==null){
+            Pair<Integer,Integer> output=new Pair<>(Integer.MAX_VALUE,-1);
+            return output;
+        }
+        Pair<Integer,Integer> leftPair=getMinAndMax(root.left);
+        Pair<Integer,Integer> rightPair=getMinAndMax(root.right);
+        int max=Math.max(root.data,Math.max(leftPair.maximum,rightPair.maximum));
+        int min=Math.min(root.data,Math.min(leftPair.minimum,rightPair.minimum));
+        Pair<Integer,Integer> output=new Pair<>(min,max);
+        return output;
+        
+	}
+	
+}
